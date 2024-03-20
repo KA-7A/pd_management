@@ -6,18 +6,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-
-    @GetMapping("/test")
+    @GetMapping("/error")
+    public String errorPage(Model model)
+    {
+        System.out.println("Мы где-то в error логе");
+        return "error1";
+    }
+    @GetMapping("/")
     public String homePage(Model model)
     {
-        model.addAttribute("filename", "blocks/test :: test");
         return "page";
     }
-
-    @GetMapping("/")
-    public String otherPage(Model model)
+    @GetMapping({"/web", "/web/"})
+    public String webHomePage(Model model)
     {
-        model.addAttribute("filename", "blocks/content :: content");
         return "page";
     }
 }
