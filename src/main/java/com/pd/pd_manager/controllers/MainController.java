@@ -10,16 +10,16 @@ public class MainController {
     public String errorPage(Model model)
     {
         System.out.println("Мы где-то в error логе");
-        return "error1";
+        return "error_page";
     }
     @GetMapping("/")
     public String homePage(Model model)
     {
-        return "page";
+        return "homepage";
     }
     @GetMapping({"/web", "/web/"})
     public String webHomePage(Model model)
     {
-        return "page";
+        return "homepage";
     }
 }
