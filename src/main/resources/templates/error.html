@@ -16,7 +16,16 @@
                 </div>
             </div>
             <div class="col py-3">
-                <a> Ты ошибся, чувак </a>
+                <div class="d-flex align-items-center justify-content-center vh-100">
+                    <div class="text-center">
+                        <h1 class="display-1 fw-bold">404</h1>
+                        <p class="fs-3"> <span class="text-danger">Эммм...</span> Страница не найдена</p>
+                        <p class="lead">
+                            Похоже, что страница, которую вы ищете, не найдена. Ну или у нас произошла внутренняя ошибка. Мы сами пока не разобрались 👉👈
+                        </p>
+                        <a href="/web/" class="btn btn-primary">На домашнюю страницу</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div th:insert="~{blocks/footer :: footer}"></div>

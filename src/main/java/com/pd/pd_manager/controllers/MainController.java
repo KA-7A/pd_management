@@ -9,8 +9,9 @@ public class MainController {
     @GetMapping("/error")
     public String errorPage(Model model)
     {
+        // На самом деле, этот кусок не работает. Хорошо бы это как-то поправить, а то противно получается :(
         System.out.println("Мы где-то в error логе");
-        return "error_page";
+        return "error";
     }
     @GetMapping("/")
     public String homePage(Model model)

@@ -15,4 +15,5 @@ public interface ReferenceInterface<Object> {
     public void delete(Long id);
 
     public void update(Long id, Object object);
+
 }

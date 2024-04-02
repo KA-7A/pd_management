@@ -1,11 +1,10 @@
 package com.pd.pd_manager.controllers;
 
-import com.pd.pd_manager.interfaces.ReferenceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 import com.pd.pd_manager.service.PersonService;
-import com.pd.pd_manager.model.Person;
+import com.pd.pd_manager.model.Persons;
 
 import java.util.List;
 
@@ -18,17 +17,17 @@ public class ApiPersonController {
     private PersonService personService;
 
     @GetMapping({"persons/"})
-    public List<Person> getAll() {
+    public List<Persons> getAll() {
         return personService.getAll();
     }
 
     @GetMapping("persons/{id}")
-    public Person getById(@PathVariable Long id) {
+    public Persons getById(@PathVariable Long id) {
         return personService.getById(id);
     }
 
     @PostMapping("persons/add/")
-    public void add(@RequestParam Person person) {
+    public void add(@RequestParam Persons person) {
         personService.add(person);
     }
 
@@ -37,7 +36,7 @@ public class ApiPersonController {
         personService.delete(id);
     }
 
-    public void update(Long id, Person person) {
+    public void update(Long id, Persons person) {
         personService.update(id, person);
     }
     // Другие методы для API

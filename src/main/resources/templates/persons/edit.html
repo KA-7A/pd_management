@@ -16,24 +16,28 @@
                 </div>
             </div>
             <div class="col py-3">
-                <form action="/web/persons/add" method="post" class="form-floating">
+                <form action="/web/persons/edit" method="post" class="form-floating">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Фамилия">
+                        <input type="text" class="form-control" id="person_id" name="person_id" th:value="${person.id_person_inst}" readonly/>
+                        <label for="person_id" >Идентификатор пользователя</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="last_name" name="last_name" th:value="${person.v_last_name}">
                         <label for="last_name">Фамилия</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Имя">
+                        <input type="text" class="form-control" id="first_name" name="first_name" th:value="${person.v_name}">
                         <label for="first_name">Имя</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="patronymic_name" name="patronymic_name" placeholder="Отчество">
+                        <input type="text" class="form-control" id="patronymic_name" name="patronymic_name" th:value="${person.v_patronymic_name}">
                         <label for="patronymic_name">Отчество</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Дата рождения">
-                        <label for="birthdate">Дата рождения</label>
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" th:value="${#dates.format(person.dt_birthdate, 'dd.MM.yyyy')}">
+                        <label for="birthdate" >Дата рождения</label>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">Добавить человека</button>
+                    <button type="submit" class="btn btn-success mt-3">Обновить данные</button>
                 </form>
             </div>
         </div>

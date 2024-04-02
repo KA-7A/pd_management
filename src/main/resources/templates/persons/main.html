@@ -16,10 +16,10 @@
                     </div>
                 </div>
                 <div class="col py-3">
-                    <form th:action="${URL}" method="get">
+                    <!--<form th:action="${URL}" method="get">
                         <input type="text" name="search" placeholder="Поиск...">
                         <button type="submit">Поиск</button>
-                    </form>
+                    </form> -->
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -30,12 +30,15 @@
                         </thead>
                         <tbody>
                         <tr th:each="person : ${persons}">
-                            <td th:text="${person.id_person}"></td>
-                            <td th:text="${person.v_last_name + ' ' + person.v_patronymic_name + ' ' + person.v_name }"></td>
-                            <td th:text="${person.dt_birthdate}"></td>
+                            <td th:text="${person.id_person_inst}"></td>
+                            <td th:text="${person.v_last_name + ' ' + person.v_name + ' ' + person.v_patronymic_name }"></td>
+                            <td th:text="${#dates.format(person.dt_birthdate, 'dd.MM.yyyy')}"></td>
+                            <td><a role="button" class="btn btn-outline-warning" th:href="${'edit/' + person.id_person_inst}">Изменить</a> </td>
+                            <td><a role="button" class="btn btn-outline-danger"  th:href="${'delete/' + person.id_person_inst}">Удалить </a> </td>
                         </tr>
                         </tbody>
                     </table>
+                    <a href="add" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Добавить пользователя</a>
                 </div>
             </div>
             <div th:insert="~{blocks/footer :: footer}"></div>

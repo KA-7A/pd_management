@@ -3,7 +3,6 @@ package com.pd.pd_manager.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -18,6 +17,6 @@ public class RoleDataTypeMap {
     private Set<Role> id_role;
 
     @ManyToMany
-    private Set<DataType> id_data_type;
+    private Set<DocumentType> id_data_type;
 
 }
