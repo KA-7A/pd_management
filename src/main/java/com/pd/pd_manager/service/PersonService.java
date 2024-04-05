@@ -22,7 +22,6 @@ public class PersonService implements ReferenceInterface<Persons> {
 
     @Override
     public List<Persons> getAll() {
-        Sort sort = Sort.by(Sort.Direction.ASC, "id_person");
          return personRepository.findAll().stream()
                  .sorted(Comparator.comparingLong(Persons::getId_person_inst))
                  .toList();
@@ -30,8 +29,13 @@ public class PersonService implements ReferenceInterface<Persons> {
 
     @Override
     public Persons getById(Long id) {
-        return personRepository.findById(id).orElse(null
+        Persons person = personRepository.findById(id).orElse(null
         );
+        if (person != null && person.getV_birthdate() == null) {
+            person.setV_birthdate(formatter.format(person.getDt_birthdate()));
+            personRepository.save(person);
+        }
+        return person;
     }
 
     @Override
@@ -51,6 +55,7 @@ public class PersonService implements ReferenceInterface<Persons> {
         person.setV_name(first_name);
         person.setV_last_name(last_name);
         person.setV_patronymic_name(patronymic_name);
+        person.setV_birthdate(birthdate);
         personRepository.save(person);
     }
 

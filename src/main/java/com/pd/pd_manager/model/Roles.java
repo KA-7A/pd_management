@@ -23,7 +23,7 @@ public class Roles {
 
     @ManyToOne
     @JoinColumn(name = "pd_role")
-    private Role roleType;
+    private RoleType roleType;
 
     @ManyToMany(fetch =  FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "pd_roles_of_person_map",

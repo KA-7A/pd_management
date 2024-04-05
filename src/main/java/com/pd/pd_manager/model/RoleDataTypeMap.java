@@ -14,7 +14,7 @@ public class RoleDataTypeMap {
     private long id_RoleDataTypeMap;
 
     @ManyToMany
-    private Set<Role> id_role;
+    private Set<RoleType> id_role;
 
     @ManyToMany
     private Set<DocumentType> id_data_type;

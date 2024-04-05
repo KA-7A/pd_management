@@ -10,28 +10,31 @@ import java.util.List;
 
 @ComponentScan
 @RestController
-@RequestMapping("api/")
+@RequestMapping("/api/v1/persons")
 public class ApiPersonController {
 
     @Autowired
     private PersonService personService;
 
-    @GetMapping({"persons/"})
+    @GetMapping({"/", ""})
     public List<Persons> getAll() {
         return personService.getAll();
     }
 
-    @GetMapping("persons/{id}")
+    @GetMapping("/{id}")
     public Persons getById(@PathVariable Long id) {
         return personService.getById(id);
     }
 
-    @PostMapping("persons/add/")
+    @PostMapping("/add")
     public void add(@RequestParam Persons person) {
         personService.add(person);
     }
 
-    @DeleteMapping("persons/delete/{id}")
+    @PostMapping("/update")
+    public void edit(@RequestParam Persons person) {personService.update(person.getId_person_inst(), person); }
+
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
         personService.delete(id);
     }

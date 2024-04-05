@@ -1,19 +1,24 @@
 package com.pd.pd_manager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Reference;
 
+import java.util.Set;
+
 @Data
 @Entity
-@Table(name = "pd_DataType")
+@Table(name = "pd_DocumentType")
 public class DocumentType {
     @Id
-    @GeneratedValue
-    private long id_DataType;   // Идентификатор типа данных
-    private String v_name;      // Название типа данных
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id_document_type;
+    private String v_name;
+    private String v_document_schema;
 
-    //TODO: Сделать ссылку на себя, если необходимо. А так мб и нулл.
-    private long id_Parent;
+    @ManyToMany(mappedBy = "documentTypes", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Set<DocumentTypeToAttributeTypeListMap> listMapSet;
 
 }
