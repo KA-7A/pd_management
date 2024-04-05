@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -28,6 +29,9 @@ public class AttributeType {
     private Set<DocumentTypeToAttributeTypeListMap> listMapSet;
 //    @OneToMany(fetch = FetchType.LAZY)
 //    private Set<DocumentAttributes> documentAttributes;
+
+    @OneToMany(mappedBy = "attributeType")
+    private List<DocumentAttributes> attributesList;
 
 
 }

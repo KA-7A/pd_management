@@ -22,6 +22,7 @@ public class WebPersonController
     @GetMapping({"/", ""})
     public String personsPage(Model model) {
         List<Persons> persons = personService.getAll();
+        model.addAttribute("title", "Пользователи");
         model.addAttribute("persons", persons);
         model.addAttribute("URL", "/web/persons");
         return "persons/main";
@@ -29,6 +30,7 @@ public class WebPersonController
 
     @GetMapping({"/add"})
     public String getAddPerson(Model model) {
+        model.addAttribute("title", "Добавление пользователя.");
         return "persons/add";
     }
 
@@ -73,6 +75,7 @@ public class WebPersonController
     @GetMapping("/error")
     public String errorPage(Model model)
     {
+        model.addAttribute("title", "Упс! Ошибка...");
         return "redirect:/error";
     }
 }

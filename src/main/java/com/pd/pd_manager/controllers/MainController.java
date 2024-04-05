@@ -10,24 +10,20 @@ import java.util.Date;
 
 @Controller
 public class MainController {
-    @GetMapping("/error")
+    @GetMapping({"error", "/error", "error/", "/error/"})
     public String errorPage(Model model)
     {
         // На самом деле, этот кусок не работает. Хорошо бы это как-то поправить, а то противно получается :(
+        model.addAttribute("title", "Упс! Ошибка...");
         System.out.println("Мы где-то в error логе");
         return "error";
     }
-    @GetMapping("/")
+    @GetMapping({"/", "/web", "/web/"})
     public String homePage(Model model)
     {
+        model.addAttribute("title", "Домашняя страница");
         return "homepage";
     }
-    @GetMapping({"/web", "/web/"})
-    public String webHomePage(Model model)
-    {
-        return "homepage";
-    }
-
 
     @GetMapping({"/test", "/test/"})
     public String testPage(Model model) {

@@ -21,9 +21,13 @@ public class DocumentAttributes {
                        initialValue = 1, allocationSize = 1)
     private Long id_attribute_inst;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_attribute_type")
+    private AttributeType attributeType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_document_inst")
     private Documents document;
 
+    private String data;
 }
